@@ -1,139 +1,108 @@
-const eventsData = [
-  {
-    id: "event-1",
-    stime: "1",
-    etime: "2",
-  },
-  {
-    id: "event-2",
-    stime: "4",
-    etime: "7",
-  },
-  {
-    id: "event-3",
-    stime: "3",
-    etime: "6",
-  },
-  {
-    id: "event-4",
-    stime: "11",
-    etime: "14",
-  },
-];
+import { eventsData, allDayeventsData } from "./data.js";
 
 let events = [];
-let fullTime = [];
 let createdEvents = [];
 
-// Loop to select all the cells store them inside an array.
+// Loop to select all the elements to display events on the calendar.
 for (let i = 0; i < 24; i++) {
   events[i] = document.querySelector(`#event-${i + 1}`);
 }
 
-console.log("events ------", events);
+console.log("Events ", events);
 
-let fullTimeList = document.querySelectorAll(".full");
-console.log("Full Time ", fullTimeList.textContent);
+// Loop to fill all day events.
+for (let i = 0; i < allDayeventsData.length; i++) {
+  let event = document.createElement("div");
+  event.append(
+    (document.createElement("span").innerText = "All Day"),
+    (document.createElement("b").innerText = allDayeventsData[i].name),
+    (document.createElement("span").innerText = allDayeventsData[i].location)
+  );
+  event.classList.add("all-day-event-data");
+  console.log(event);
+  document.querySelector(".all-day-section").append(event);
+}
 
+// Function to Create Event and fill the corresponding section with Start and End time.
 function createEvent(startTime, endTime) {
-  const newEvent = events[startTime].appendChild(eventContent(startTime));
-  console.log("event", newEvent);
-
+  let newEvent = events[startTime].appendChild(eventContent(startTime));
   newEvent.classList.add("event");
-  newEvent.style.height = (endTime - startTime) * 100 + "px";
-
+  newEvent.style.height = (endTime - startTime) * 70 + "px";
   createdEvents.push(newEvent);
 }
 
-function fillEvents(startTime, endTime) {
-  for (let i = 0; i < 12; i++) {
-    events[i] = document.querySelector(`#event-${i + 1}`);
-    events[i].textContent = `${eventsData[i].time} - ${eventsData[i].id}`;
-  }
-  // for (let i = 0; i < eventsData.length; i++) {
-  //     const event = eventsData[i];
-  //     const eventTime = new Date(event.time);
-  //     if (eventTime >= startTime && eventTime <= endTime) {
-  // for (let i = 0; i < eventsData.length; i++) {
-  //     events[i].textContent = eventsData[i].time;
-  // }
+
+
+console.log("lkdjl ", convertToActualTime(2));
+
+// Get Time from Data.Js File
+for (let i = 0; i < eventsData.length; i++) {
+  createEvent(eventsData[i].stime, eventsData[i].etime);
 }
 
-// function setEvent(startTime, endTime) {
-//   const newEvent = hourSelector[startTime].appendChild(content(startTime));
-//   console.log("event", newEvent);
-
-//   newEvent.classList.add("event");
-//   newEvent.style.height = (endTime - startTime) * 100 + "px";
-// }
-
-// createEvent(2, 4);
-// createEvent(2,4);
-// setEvent(3, 5);
-// setEvent(11, 19);
-
-console.log("Created Events ", createdEvents[0]);
-
+// Check if two events overlap
 function elementsOverlap(el1, el2) {
-    const domRect1 = el1.getBoundingClientRect();
-    const domRect2 = el2.getBoundingClientRect();
-  
-    return !(
-      domRect1.top > domRect2.bottom ||
-      domRect1.right < domRect2.left ||
-      domRect1.bottom < domRect2.top ||
-      domRect1.left > domRect2.right
-    );
-  }
-  
-  const el1 = document.getElementById('cont-1');
-  const el2 = document.getElementById('cont-2');
-//   const el3 = document.getElementById('box3');
-  
-if(elementsOverlap(el1, el2)) {
-    el1.appendChild(el2);
-        console.log("hello", el2.id);
-        el2.style.marginLeft = `${
-          (3 - 2) * 120
+  let domRect1 = el1.getBoundingClientRect();
+  let domRect2 = el2.getBoundingClientRect();
 
-        //   (objArr[i].start - objArr[j].start) * 120
-        }px`;
+  return !(
+    domRect1.top > domRect2.bottom ||
+    domRect1.right < domRect2.left ||
+    domRect1.bottom < domRect2.top ||
+    domRect1.left > domRect2.right
+  );
+}
+
+// Fix OverLap and prevent from colliding.
+function fixOverLap() {
+  for (let i = 0; i < createdEvents.length; i++) {
+    if (elementsOverlap(createdEvents[i], createdEvents[i + 1])) {
+      let divWidth = 100 / createdEvents.length;
+      createdEvents[i].style.width = `${divWidth}%`;
+      createdEvents[i + 1].style.width = `${divWidth}%`;
+
+      if (createdEvents.length === 2) {
+        createdEvents[i + 1].style.width = null;
+        createdEvents[i + 1].style.marginLeft = `${450}px`;
+      } else if (createdEvents.length === 3) {
+        if (i == 1) {
+          createdEvents[i + 1].style.width = null;
+          createdEvents[i].style.marginLeft = `${320}px`;
+          createdEvents[i + 1].style.marginLeft = `${590}px`;
+        }
+      } else {
+        createdEvents[i + 1].style.marginLeft = `${350}px`;
       }
-// }
-  console.log(elementsOverlap(el1, el2)); // 👉️ true
+    }
+  }
+}
 
+fixOverLap();
 
-
-// for(let i = 0; i < events.length; i++) {
-//   if(events[i].id === eventsData[i].id ) {
-//     console.log("Events ", events[i].id, ": ", eventsData[i].id);
-//   }
-// }
-console.log("Events ", document.querySelector(".am-inner-half").innerHTML);
-
+// function to create events box
 function eventContent(startTime) {
+    console.log("Time --- ", startTime);
   const eventDiv = document.createElement("div");
   eventDiv.classList.add("event-content");
 
-  eventTime = document.createElement("span");
+  const eventTime = document.createElement("span");
   eventTime.classList.add("all-day");
-  if (startTime < 12) {
-    eventTime.textContent = `${startTime}:00 AM`;
-  } else {
-    eventTime.textContent = `${startTime}:00 PM`;
-  }
+  eventTime.textContent = convertToActualTime(startTime)
 
-  // eventTime.textContent = "9:00AM - ";
+//   if (startTime < 12) {
+//     eventTime.textContent = `${startTime}:00 AM`;
+//   } else {
+//     eventTime.textContent = `${startTime}:00 PM`;
+//   }
 
-  eventName = document.createElement("b");
+  const eventName = document.createElement("b");
   eventName.classList.add("sample-item");
   eventName.textContent = "Sample Item";
 
-  eventLocation = document.createElement("span");
+  const eventLocation = document.createElement("span");
   eventLocation.classList.add("sample-location");
   eventLocation.textContent = "Sample Location";
   eventLocation.style.marginLeft = "0px";
-  // document.querySelector(".sample-location").style.marginLeft = "0px";
 
   const eventFlex = document.querySelector(".event");
   const eventDivData = eventFlex.appendChild(eventDiv);
@@ -144,5 +113,50 @@ function eventContent(startTime) {
   return eventDiv;
 }
 
-// let testing = eventContent(12);
-// console.log("Testing ", testing);
+function convertToActualTime(time) {
+    return time === 1
+      ? "9:00AM"
+      : time === 2
+      ? "10:00AM"
+      : time === 3
+      ? "10:30AM"
+      : time === 4
+      ? "11:00AM"
+      : time === 5
+      ? "11:30AM"
+      : time === 6
+      ? "12:00PM"
+      : time === 7
+      ? "12:30PM"
+      : time === 8
+      ? "1:00PM"
+      : time === 9
+      ? "1:30PM"
+      : time === 10
+      ? "2:00PM"
+      : time === 11
+      ? "2:30PM"
+      : time === 12
+      ? "3:00PM"
+      : time === 13
+      ? "3:30PM"
+      : time === 14
+      ? "4:00PM"
+      : time === 15
+      ? "4:30PM"
+      : time === 16
+      ? "5:30PM"
+      : time === 17
+      ? "6:00PM"
+      : time === 18
+      ? "6:30PM"
+      : time === 19
+      ? "7:00PM"
+      : time === 20
+      ? "7:30PM"
+      : time === 21
+      ? "8:00PM"
+      : time === 22
+      ? "8:30PM"
+      : "Wrong time";
+  }

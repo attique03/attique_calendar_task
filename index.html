@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Read Text File</title>
+    <title>Calendar | JavaScript</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
 
@@ -12,13 +12,13 @@
 
       <!-- All Day -->
       <div class="all-day-section">
-        <span class="green"></span>
+        <!-- <span class="green"></span> -->
 
-        <div class="all-day-event-data">
+        <!-- <div class="all-day-event-data">
           <span class="all-day">ALL DAY - </span
           ><b class="sample-item"> Sample Item </b>
           <span class="sample-location">Sample Location</span>
-        </div>
+        </div> -->
       </div>
 
       <!-- AM -->
@@ -28,27 +28,28 @@
         <div class="am-data">
           <div class="am-content">
             <span class="full">9:00</span>
+
             <div class="am-inner-content">
-              <div class="half" id="event-1">
-                <div class="event">
-                  <div class="event-content" id="cont-1">
-                    <span class="all-day">9:00AM - </span
-                    ><b class="sample-item"> Sample Item </b>
-                    <span class="sample-location" style="margin-left: 0"
-                      >Sample Location</span
-                    >
-                  </div>
-                  
-                </div>
-              </div>
-              <div class="event" id="event-2">
-                <div class="event-content" id="cont-2">
+              <!-- <div class="event">
+                <div class="event-content" id="cont-1">
                   <span class="all-day">9:00AM - </span
                   ><b class="sample-item"> Sample Item </b>
                   <span class="sample-location" style="margin-left: 0"
                     >Sample Location</span
                   >
                 </div>
+              </div> -->
+              <div class="half" id="event-1">
+                <div class="event"></div>
+              </div>
+              <div class="event" id="event-2">
+                <!-- <div class="event-content" id="cont-2">
+                  <span class="all-day">9:00AM - </span
+                  ><b class="sample-item"> Sample Item </b>
+                  <span class="sample-location" style="margin-left: 0"
+                    >Sample Location</span
+                  >
+                </div> -->
               </div>
 
               <div class="am-inner-half">9:30</div>
@@ -59,9 +60,7 @@
             <span class="full">10:00</span>
             <div class="am-inner-content">
               <div class="half" id="event-3">
-                <div class="event">
-                  
-                </div>
+                <div class="event"></div>
               </div>
               <div class="event" id="event-4"></div>
               <div class="am-inner-half">10:30</div>
@@ -148,8 +147,7 @@
           <div class="am-content">
             <span class="full">6:00</span>
             <div class="am-inner-content">
-              
-              <div class="event" id="event-2">
+              <!-- <div class="event" id="event-2">
                 <div class="event-content" id="cont-2">
                   <span class="all-day">9:00AM - </span
                   ><b class="sample-item"> Sample Item </b>
@@ -157,7 +155,7 @@
                     >Sample Location</span
                   >
                 </div>
-              </div>
+              </div> -->
 
               <div class="half" id="event-18"></div>
               <div class="event" id="event-19"></div>
@@ -190,7 +188,7 @@
     </div>
   </body>
 
-  <script src="index.js"></script>
+  <script type="module" src="index.js"></script>
 
   <!-- <script type="text/javascript">
     document

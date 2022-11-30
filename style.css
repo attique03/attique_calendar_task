@@ -28,6 +28,7 @@ header {
 /* All Day*/
 .all-day-section {
   display: flex;
+  flex-direction: column;
   /* padding: 20px 0px;
   background-color: #ffffff;
   color: green;
@@ -36,17 +37,21 @@ header {
 }
 
 .green {
-  flex: 1%;
+  /* flex: 1%; */
   background-color: RGB(68, 212, 59);
   /* width: 10px; */
 }
 
 .all-day-event-data {
-  flex: 99%;
+  /* flex: 99%; */
   padding: 10px 0px 10px 10px;
   background-color: #ffffff;
   opacity: 0.9;
   font-size: 14px;
+    margin: 1px 0;
+    border-left: 8px solid green;
+
+    margin-left: 120px;
 }
 
 .sample-location {
@@ -81,7 +86,7 @@ header {
   opacity: 0.9;
   font-size: 14px;
   margin-left: 50px;
-  width: 100%
+  /* width: 100% */
 }
 
 .all-day {

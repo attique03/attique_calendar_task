@@ -13,8 +13,9 @@ console.log("Events ", events);
 // Loop to fill all day events.
 for (let i = 0; i < allDayeventsData.length; i++) {
   let event = document.createElement("div");
+
   event.append(
-    (document.createElement("span").innerText = "All Day"),
+    (document.createElement("span").innerText = "All Day - "),
     (document.createElement("b").innerText = allDayeventsData[i].name),
     (document.createElement("span").innerText = allDayeventsData[i].location)
   );
@@ -30,8 +31,6 @@ function createEvent(startTime, endTime) {
   newEvent.style.height = (endTime - startTime) * 70 + "px";
   createdEvents.push(newEvent);
 }
-
-
 
 console.log("lkdjl ", convertToActualTime(2));
 
@@ -81,14 +80,14 @@ fixOverLap();
 
 // function to create events box
 function eventContent(startTime) {
-    console.log("Time --- ", startTime);
+  console.log("Time --- ", startTime);
   const eventDiv = document.createElement("div");
   eventDiv.classList.add("event-content");
 
   const eventTime = document.createElement("span");
   eventTime.classList.add("all-day");
-  eventTime.textContent = convertToActualTime(startTime)
-  
+  eventTime.textContent = convertToActualTime(startTime);
+
   const eventName = document.createElement("b");
   eventName.classList.add("sample-item");
   eventName.textContent = "Sample Item";
@@ -108,49 +107,49 @@ function eventContent(startTime) {
 }
 
 function convertToActualTime(time) {
-    return time === 1
-      ? "9:00AM"
-      : time === 2
-      ? "10:00AM"
-      : time === 3
-      ? "10:30AM"
-      : time === 4
-      ? "11:00AM"
-      : time === 5
-      ? "11:30AM"
-      : time === 6
-      ? "12:00PM"
-      : time === 7
-      ? "12:30PM"
-      : time === 8
-      ? "1:00PM"
-      : time === 9
-      ? "1:30PM"
-      : time === 10
-      ? "2:00PM"
-      : time === 11
-      ? "2:30PM"
-      : time === 12
-      ? "3:00PM"
-      : time === 13
-      ? "3:30PM"
-      : time === 14
-      ? "4:00PM"
-      : time === 15
-      ? "4:30PM"
-      : time === 16
-      ? "5:30PM"
-      : time === 17
-      ? "6:00PM"
-      : time === 18
-      ? "6:30PM"
-      : time === 19
-      ? "7:00PM"
-      : time === 20
-      ? "7:30PM"
-      : time === 21
-      ? "8:00PM"
-      : time === 22
-      ? "8:30PM"
-      : "Wrong time";
-  }
+  return time === 1
+    ? "9:00AM"
+    : time === 2
+    ? "10:00AM"
+    : time === 3
+    ? "10:30AM"
+    : time === 4
+    ? "11:00AM"
+    : time === 5
+    ? "11:30AM"
+    : time === 6
+    ? "12:00PM"
+    : time === 7
+    ? "12:30PM"
+    : time === 8
+    ? "1:00PM"
+    : time === 9
+    ? "1:30PM"
+    : time === 10
+    ? "2:00PM"
+    : time === 11
+    ? "2:30PM"
+    : time === 12
+    ? "3:00PM"
+    : time === 13
+    ? "3:30PM"
+    : time === 14
+    ? "4:00PM"
+    : time === 15
+    ? "4:30PM"
+    : time === 16
+    ? "5:30PM"
+    : time === 17
+    ? "6:00PM"
+    : time === 18
+    ? "6:30PM"
+    : time === 19
+    ? "7:00PM"
+    : time === 20
+    ? "7:30PM"
+    : time === 21
+    ? "8:00PM"
+    : time === 22
+    ? "8:30PM"
+    : "Wrong time";
+}

@@ -28,12 +28,16 @@ const eventsData = [
 
 const allDayeventsData = [
   {
-    name: "event 1",
-    location: "location 1",
+    name: " Event 1 ",
+    location: " Location 1 ",
   },
   {
-    name: "event 2",
-    location: "location 2",
+    name: " Event 2 ",
+    location: " Location 2 ",
+  },
+  {
+    name: " Event 3 ",
+    location: " Location 3 ",
   },
 ];
 

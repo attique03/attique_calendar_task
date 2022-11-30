@@ -88,13 +88,7 @@ function eventContent(startTime) {
   const eventTime = document.createElement("span");
   eventTime.classList.add("all-day");
   eventTime.textContent = convertToActualTime(startTime)
-
-//   if (startTime < 12) {
-//     eventTime.textContent = `${startTime}:00 AM`;
-//   } else {
-//     eventTime.textContent = `${startTime}:00 PM`;
-//   }
-
+  
   const eventName = document.createElement("b");
   eventName.classList.add("sample-item");
   eventName.textContent = "Sample Item";

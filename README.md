@@ -1,17 +1,17 @@
 **How to run the Project.**
-1- Download or Clone the Repository to the Computer.
-2- Open the Project in VS Code or any other text Editor and run with live server.
-3- You can also directly open the index.html file and see the project on web browser.
+* Download or Clone the Repository to the Computer.
+* Open the Project in VS Code or any other text Editor and run with live server.
+* You can also directly open the index.html file and see the project on web browser.
 
 **Functionality**
 This is Calendar Application where we can set Events to remind ourselves for certain events.
 We can create events by following these steps.
 
-1- Go to Data.js file, inside eventsData Array we have to change the start and end time of the event named as stime and etime.
-2- We can set the events for whole day as well which is named with the allDayeventsData.
-3- By Creating a new Object with Start(stime) and End(etime) time values we can see particular events on the browser.
-4- Similary we can set the all day events with its required parameters.
-5- Below is the Specified Foramat for stime and etime.
+* Go to Data.js file, inside eventsData Array we have to change the start and end time of the event named as stime and etime.
+* We can set the events for whole day as well which is named with the allDayeventsData.
+* By Creating a new Object with Start(stime) and End(etime) time values we can see particular events on the browser.
+* Similary we can set the all day events with its required parameters.
+* Below is the Specified Foramat for stime and etime.
     time === 1
     ? "9:00AM"
     : time === 2
